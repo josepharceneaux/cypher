@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+  <head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"></meta>
+    <link type="text/css" rel="stylesheet" href="index.css"></link>
+    <title>Subsitution Cypher</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+          // console.log ("Document ready loading.");
+
+          $("#Button1").click(function(){
+	      var div = document.getElementById("DisplayBox");
+      	      <!-- div.innerHTML = 'Encrypted text goes here'; -->
+              fetch("https://ipinfo.io/json")
+                  .then(function (response) {
+                      return response.json();
+                  })
+                  .then(function (jsonResponse) {
+	      	      div.innerHTML = 'IP Address: ' + jsonResponse.ip;
+                  })
+          });
+
+          $("#Button2").click(function(){
+	      var div = document.getElementById("DisplayBox");
+
+	      div.innerHTML = 'DEcrypted text goes here';
+          });
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="Content">
+      <div id="Main">
+
+	<center>
+
+	  <div id="SubTitleText">
+	    <h1><i>Cypher / Decypher</i></h1>
+	  </div>
+	  <div id="RoundedFrame">
+
+	    <div id="BoxFrame">
+
+	      <div id="BoxTitle">
+		Enter text to encrypt:
+	      </div>
+	      <br><br>
+	      <form>
+		<input type="text" id="TextEntry" name="plaintext">
+	      </form>
+	      <br>
+		<div id="SingleButton">
+		  <div class="Button" id="Button1">Encrypt</div>
+		</div>
+		<br><br><br><br>
+
+	      <div id="BoxTitle">
+		Enter text to decrypt:
+	      </div>
+	      <br><br>
+
+              <form>
+		<input type="text" id="TextEntry" name="plaintext">
+	      </form>
+              <br>
+	      <div id="SingleButton">
+		<div class="Button" id="Button2">Decrypt</div>
+	      </div>
+	      <br><br><br><br><br><br>
+
+	      <div id="DisplayBox">
+		Some text.
+	      </div>
+
+	</center>
+
+      </div>
+    </div>
+
+</body>
+
+</html>
