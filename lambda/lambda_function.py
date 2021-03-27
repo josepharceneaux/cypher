@@ -2,28 +2,23 @@ import sys
 import os
 import json
 
-sys.path.append(os.path.join(os.path.dirname(__file__)))
-# from subsitution import Substitution
-import substitution
 
-# def lambda_handler(event, context):
-#     """
-#     """
-#     s = substitution.Substitution()
-#     if event['request'] == "encrypt":
-#         plain_text = event['plainText']
-#         encoded_text = s.encode(plain_text)
-#     else:
-#         encoded_text = event['encodedText']
-#         plain_text = s.decode(encoded_text)
-
-#     return {
-#         'encodedText': encoded_text,
-#         'plainText': plain_text,
-#         }
+from subsitution import Substitution
 
 
 def lambda_handler(event, context):
     """
     """
-    return json.dumps(event)
+    s = Substitution()
+    if event['request'] == "encrypt":
+        plain_text = event['plaintext']
+        encoded_text = s.encode(plain_text)
+    else:
+        encoded_text = event['encodedtext']
+        plain_text = s.decode(encoded_text)
+
+    return {
+        'request': event['request'],
+        'plaintext': plain_text,
+        'encodedtext': encoded_text
+        }
