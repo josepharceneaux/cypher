@@ -33,5 +33,6 @@ deactivate:
 install:
 
 test: tests
-tests: env
+tests:
+	env
 	pytest
