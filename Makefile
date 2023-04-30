@@ -21,3 +21,6 @@ install-lambda:
 	@echo "Uploading Lambda function"
 
 install: install-static install-lambda
+
+clean:
+	rm *~
