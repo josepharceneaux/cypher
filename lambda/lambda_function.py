@@ -3,7 +3,7 @@ import os
 import json
 
 
-from subsitution import Substitution
+from substitution import Substitution
 
 
 def lambda_handler(event, context):

@@ -6,7 +6,8 @@ PYENV=~/.pyenv/lambda-tools/bin/activate
 FUNCTION := $(shell basename $(PWD))
 ZIP_PACKAGE=deployment-package.zip
 
-FUNCTION_NAME=lambda_function
+FUNCTION_NAME=cypher
+FUNCTION_FILES=substitution.py lambda_function.py
 
 
 # Create virtual environment
@@ -18,8 +19,8 @@ env: requirements.txt
 deploy: install
 install: env zipfile upload
 
-zipfile: lambda_function.py
-	zip ${ZIP_PACKAGE} lambda_function.py
+zipfile: clean
+	zip ${ZIP_PACKAGE} ${FUNCTION_FILES}
 
 upload:
 	aws lambda update-function-code --function-name ${FUNCTION_NAME} --zip-file fileb://${ZIP_PACKAGE}

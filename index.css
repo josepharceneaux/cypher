@@ -112,6 +112,13 @@
     border: 4px solid #0000ff
     }
 
+#TextEntry {
+    margin-left: 20px;
+    width: 100%;
+    background-color: #f2f5c9;
+    border: 4px solid #0000ff
+    }
+
 #DisplayBox {
     position: relative;
     width: 95%;

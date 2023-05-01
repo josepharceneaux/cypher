@@ -20,19 +20,22 @@
 
           $("#Button1").click(function(){
 	      var div = document.getElementById("DisplayBox");
-      	      <!-- div.innerHTML = 'Encrypted text goes here'; -->
-              fetch("https://ipinfo.io/json")
-                  .then(function (response) {
-                      return response.json();
-                  })
-                  .then(function (jsonResponse) {
-	      	      div.innerHTML = 'IP Address: ' + jsonResponse.ip;
-                  })
+	      var plaintext = $("[name='plaintext']").val();
+	      alert("Encrypting: " + plaintext);
+              <!-- fetch("https://ipinfo.io/json") -->
+              <!--     .then(function (response) { -->
+              <!--         return response.json(); -->
+              <!--     }) -->
+              <!--     .then(function (jsonResponse) { -->
+	      <!-- 	      div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
+              <!--     }) -->
+	      div.innerHTML = 'Encrypted text goes here';
           });
 
           $("#Button2").click(function(){
 	      var div = document.getElementById("DisplayBox");
-
+	      var encrypted = $("[name='encryptedtext']").val();
+	      alert("Decrypting: " + encrypted);
 	      div.innerHTML = 'DEcrypted text goes here';
           });
       });
@@ -73,7 +76,7 @@
 	      <br><br>
 
               <form>
-		<input type="text" id="TextEntry" name="plaintext">
+		<input type="text" id="TextEntry" name="encryptedtext">
 	      </form>
               <br>
 	      <div id="SingleButton">
