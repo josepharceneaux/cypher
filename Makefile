@@ -10,6 +10,7 @@ list-buckets:
 	@echo "S3 buckets"
 	@aws s3 ls
 
+static: install-static
 install-static:
 	@echo "Uploading static files"
 	@aws s3 cp ./cypher.html ${BUCKET_URI}/cypher.html

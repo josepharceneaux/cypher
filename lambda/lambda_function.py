@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import urllib3
 
 
 from substitution import Substitution
@@ -10,29 +11,23 @@ def lambda_handler(event, context):
     """
     """
 
-    print("New Cypher Function Starting")
-    # print("Event plist:")
-    # for key in event.keys():
-    #     print("  Key: " + key)
-    #     print("  Value: " + event[key])
-    #     if key == "rawQueryString":
-    #        print("  " + key + "Query String Values")
-    #    else:
-    #        print("  " + key + " : " + event[key])
+    print("Python 3.10 Cypher Function")
 
     s = Substitution()
-    
-    action = event['request']
+
+    action = event['queryStringParameters']['request']
     if action and action == "encrypt":
         print("Encrypting")
-        plain_text = event['plaintext']
+        plain_text = event['queryStringParameters']['plaintext']
         encoded_text = s.encode(plain_text)
     elif action and action == "decrypt":
+        encoded_text = event['queryStringParameters']['encodedtext']
         print("Decrypting")
-        encoded_text = event['plaintext']
         plain_text = s.decode(encoded_text)
     else:
         action = "unknown action"
+        plaintext = ""
+        encoded_text = ""
         print("Unknown request")
 
     return {
