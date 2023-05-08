@@ -22,6 +22,8 @@
 	      var div = document.getElementById("DisplayBox");
 	      var plaintext = $("[name='plaintext']").val();
 	      alert("Encrypting: " + plaintext);
+	      div.innerHTML = 'Encrypted text goes here';
+
               <!-- fetch("https://ipinfo.io/json") -->
               <!--     .then(function (response) { -->
               <!--         return response.json(); -->
@@ -29,7 +31,6 @@
               <!--     .then(function (jsonResponse) { -->
 	      <!-- 	      div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
               <!--     }) -->
-	      div.innerHTML = 'Encrypted text goes here';
           });
 
           $("#Button2").click(function(){
