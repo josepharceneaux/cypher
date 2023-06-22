@@ -10,6 +10,14 @@ FUNCTION_NAME=cypher
 FUNCTION_FILES=substitution.py lambda_function.py
 
 
+list-functions:
+	@echo "Lambda functions"
+	@aws lambda list-functions | grep FunctionName
+
+get-cypher-function:
+	@echo "Cypher Function"
+	@aws lambda get-function --function-name cypher
+
 # Create virtual environment
 venv: env
 env: requirements.txt
