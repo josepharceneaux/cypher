@@ -10,6 +10,14 @@ list-buckets:
 	@echo "S3 buckets"
 	@aws s3 ls
 
+list-functions:
+	@echo "Lambda functions"
+	@aws lambda list-functions | grep FunctionName
+
+get-cypher-function:
+	@echo "Cypher Function"
+	@aws lambda get-function --function-name cypher
+
 static: install-static
 install-static:
 	@echo "Uploading static files"
