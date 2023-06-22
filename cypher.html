@@ -22,8 +22,11 @@
 	      var div = document.getElementById("DisplayBox");
 	      var plaintext = $("[name='plaintext']").val();
 	      alert("Encrypting: " + plaintext);
+	      // call encrypt function here
 	      div.innerHTML = 'Encrypted text goes here';
 
+              <!-- An example function that fetches our IP addressk -->
+      
               <!-- fetch("https://ipinfo.io/json") -->
               <!--     .then(function (response) { -->
               <!--         return response.json(); -->
@@ -37,7 +40,8 @@
 	      var div = document.getElementById("DisplayBox");
 	      var encrypted = $("[name='encryptedtext']").val();
 	      alert("Decrypting: " + encrypted);
-	      div.innerHTML = 'DEcrypted text goes here';
+	      // call decrypt function here
+	      div.innerHTML = 'Decrypted text goes here';
           });
       });
     </script>
@@ -47,10 +51,8 @@
   <body>
 
     <div id="Content">
+      <center>
       <div id="Main">
-
-	<center>
-
 	  <div id="SubTitleText">
 	    <h1><i>Encrypt / Decrypt</i></h1>
 	  </div>
@@ -86,12 +88,12 @@
 	      <br><br><br><br><br><br>
 
 	      <div id="DisplayBox">
-		Some text.
+		Result goes here
 	      </div>
 
-	</center>
 
       </div>
+	</center>
     </div>
 
 </body>
