@@ -8,6 +8,7 @@
 #Main {
 	background: transparent url('images/background-bw-900-900.png');
 	background-size: cover;
+	height: 600px;
 }
 
 #Logo {
@@ -89,7 +90,7 @@
     border: 5px solid #f8bc1c;
     padding: 20px;
     width: 700px;
-    height: 500px;
+    height: 400px;
     }
 
 #BoxFrame {

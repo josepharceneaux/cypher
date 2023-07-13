@@ -14,35 +14,42 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
     <script>
+
+      // Stub for requesting encryption of text
+      function getEncrypted(plaintext){
+      	
+              <!-- An function that fetches our IP addressk -->
+      
+              fetch("https://ipinfo.io/json")
+                  .then(function (response) {
+                      return response.json();
+                  })
+                  .then(function (jsonResponse) {
+	      	      div.innerHTML = 'IP Address: ' + jsonResponse.ip;
+                  })
+
+	  <!-- return "Translating: Foobar" -->
+      }
+
       $(document).ready(function(){
 
-          // console.log ("Document ready loading.");
-
-          $("#Button1").click(function(){
+          $("#Button1").click(function(plaintextparm){
 	      var div = document.getElementById("DisplayBox");
-	      var plaintext = $("[name='plaintext']").val();
+	      var plaintext = $("[name='plaintextparm']").val();
 	      alert("Encrypting: " + plaintext);
 	      // call encrypt function here
-	      div.innerHTML = 'Encrypted text goes here';
+	      // div.innerHTML = 'Encrypted text goes here';
+	      div.innerHTML = getEncrypted()
 
-              <!-- An example function that fetches our IP addressk -->
-      
-              <!-- fetch("https://ipinfo.io/json") -->
-              <!--     .then(function (response) { -->
-              <!--         return response.json(); -->
-              <!--     }) -->
-              <!--     .then(function (jsonResponse) { -->
-	      <!-- 	      div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
-              <!--     }) -->
+              var prefix = "Encrypted test is: "
           });
 
+
+	  var prefix = "Decrypted text is: "
           $("#Button2").click(function(){
-	      var div = document.getElementById("DisplayBox");
-	      var encrypted = $("[name='encryptedtext']").val();
-	      alert("Decrypting: " + encrypted);
-	      // call decrypt function here
-	      div.innerHTML = 'Decrypted text goes here';
-          });
+	  var div = document.getElementById("DisplayBox");
+	  var encrypted = $("[name='encryptedtext']").val();
+	  };
       });
     </script>
 
@@ -85,10 +92,10 @@
 	      <div id="SingleButton">
 		<div class="Button" id="Button2">Decrypt</div>
 	      </div>
-	      <br><br><br><br><br><br>
+	      <br><br><br><br>
 
 	      <div id="DisplayBox">
-		Result goes here
+		"Result is here: Dogs"
 	      </div>
 
 
