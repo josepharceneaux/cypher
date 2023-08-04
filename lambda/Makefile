@@ -37,7 +37,7 @@ upload:
 #	../scripts/deploy_lambda.py --deploy --function ${FUNCTION}
 
 clean:
-	rm -rf __pycache__ *.zip
+	rm -rf __pycache__ ${ZIP_PACKAGE}
 
 distclean:
 	rm -rf deployments/deployment_* /tmp/*
@@ -47,5 +47,6 @@ deactivate:
 
 test: tests
 tests:
-	env
+	${PIP} install -r requirements.txt
+#	env
 	pytest
