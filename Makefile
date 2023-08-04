@@ -44,5 +44,10 @@ install-lambda:
 
 install: install-static install-lambda
 
+tests: test
+test:
+	cd lambda; make test
+
 clean:
 	rm -f *~
+	cd lambda; make clean
