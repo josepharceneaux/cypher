@@ -11,7 +11,26 @@
     <link type="text/css" rel="stylesheet" href="index.css"></link>
     <title>Subsitution Cypher</title>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <!-- Conditionally load jquery locally or remotely -->
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script
+       var ref = document.querySelector('script');
+       ref.onerror = function() {
+           console.log("Loading jquery caught an error");
+       }
+       ref.src="jquery3.6.0.min.js";
+       ref.src="foobar.js";
+       <!-- src="jquery3.6.0.min.js"> -->
+    </script>
+
+    <!-- <script> -->
+    <!--   var ref = document.querySelector('script'); -->
+    <!--   ref.onerror = function() { -->
+    <!--   alert("Loading jquery caught an error"); -->
+    <!--   } -->
+    <!--   ref.src = "jquery3.6.0.min.js"; -->
+    <!-- </script> -->
 
     <script>
 
@@ -20,37 +39,50 @@
       	
               <!-- An function that fetches our IP addressk -->
       
-              fetch("https://ipinfo.io/json")
-                  .then(function (response) {
-                      return response.json();
-                  })
-                  .then(function (jsonResponse) {
-	      	      div.innerHTML = 'IP Address: ' + jsonResponse.ip;
-                  })
+              <!-- fetch("https://ipinfo.io/json") -->
+              <!--     .then(function (response) { -->
+              <!--         return response.json(); -->
+              <!--     }) -->
+              <!--     .then(function (jsonResponse) { -->
+	      <!-- 	      div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
+              <!--     }) -->
 
-	  <!-- return "Translating: Foobar" -->
+	  <!-- alert("ENCRYPRING: " + plaintext); -->
+	  <!-- return "ENCRYPTING: " + plaintext; -->
+	  alert("Getting ENCRYPTING");
+	  return "Some ENCRYPTED TEXT!!!! from the ECRYPTION function!";
       }
 
-      $(document).ready(function(){
+      // Stub for requesting decryption of text
+      function getDecrypted(encryptedtext){
+	  plaintext = "decrypted text";
+	  return plaintext;
+      }
+
+      // The text to decrypt
+      $(document).ready(function() {
 
           $("#Button1").click(function(plaintextparm){
-	      var div = document.getElementById("DisplayBox");
-	      var plaintext = $("[name='plaintextparm']").val();
-	      alert("Encrypting: " + plaintext);
-	      // call encrypt function here
-	      // div.innerHTML = 'Encrypted text goes here';
-	      div.innerHTML = getEncrypted()
+      	      var plaintext = $("[name='plaintext']").val();
+	      console.log("ENCRYPTING: " + plaintext);
+	      var encrypted = getEncrypted(plaintext);
+	      console.log("Encrypted is: " + encrypted);
+	      document.getElementById("DisplayBox").value = encrypted;
+	      console.log("Should have put this in the textbox: " + encrypted);
+	  })
 
-              var prefix = "Encrypted test is: "
-          });
+	  console.log("Setting Button2");
+          $("#Button2").click(function(encryptedparm){
+      	      var cyphertext = $("[name='encryptedtext']").val();
+	      console.log("DECRYPTING: " + cyphertext);
+	      var plaintext = getDecrypted(cyphertext);
+	      console.log("Decrypted is: " + plaintext);
+	      document.getElementById("DisplayBox").value = plaintext;
+	      console.log("Should have put this in the textbox: " + plaintext);
+	  })
+       }
+     )
 
-
-	  var prefix = "Decrypted text is: "
-          $("#Button2").click(function(){
-	  var div = document.getElementById("DisplayBox");
-	  var encrypted = $("[name='encryptedtext']").val();
-	  };
-      });
     </script>
 
   </head>
@@ -95,7 +127,7 @@
 	      <br><br><br><br>
 
 	      <div id="DisplayBox">
-		"Result is here: Dogs"
+		Waiting for result...
 	      </div>
 
 
