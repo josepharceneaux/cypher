@@ -1,5 +1,3 @@
-
-
 import pytest
 
 
@@ -15,8 +13,8 @@ def test_reverse():
 
     print("In TEST_REVERSE")
     
-    # coder = Substitution.Substitution()
-    # encoded = coder.encode(CLEAR_TEXT)
-    # decoded = coder.decode(encoded)
-    # assert decoded == CLEAR_TEXT
+    coder = Substitution.Substitution()
+    encoded = coder.encode(CLEAR_TEXT)
+    decoded = coder.decode(encoded)
+    assert decoded == CLEAR_TEXT
 
