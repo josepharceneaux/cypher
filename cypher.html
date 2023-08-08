@@ -34,28 +34,31 @@
 
     <script>
 
+      var cypher_function = "Some URL";
+
+      function getIP(){
+          fetch("https://ipinfo.io/json").then(function (response) {
+              return response.json();
+          }).then(function (jsonResponse) {
+              div.innerHTML = 'IP Address: ' + jsonResponse.ip;
+          })  
+      }
+
       // Stub for requesting encryption of text
       function getEncrypted(plaintext){
-      	
-              <!-- An function that fetches our IP addressk -->
-      
-              <!-- fetch("https://ipinfo.io/json") -->
-              <!--     .then(function (response) { -->
-              <!--         return response.json(); -->
-              <!--     }) -->
-              <!--     .then(function (jsonResponse) { -->
-	      <!-- 	      div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
-              <!--     }) -->
 
 	  <!-- alert("ENCRYPRING: " + plaintext); -->
 	  <!-- return "ENCRYPTING: " + plaintext; -->
-	  alert("Getting ENCRYPTING");
-	  return "Some ENCRYPTED TEXT!!!! from the ECRYPTION function!";
+
+	  alert("Getting ENCRYPTING of " + plaintext);
+	  console.log("Fetching CYPHER text from URL: " + cypher_function);
+	  return "ENCRYPTED TEXT!!!!";
       }
 
       // Stub for requesting decryption of text
       function getDecrypted(encryptedtext){
-	  plaintext = "decrypted text";
+	  console.log("Fetching PLAIN text from URL: " + cypher_function);
+	  plaintext = "PLAINTEXT";
 	  return plaintext;
       }
 
@@ -66,7 +69,7 @@
       	      var plaintext = $("[name='plaintext']").val();
 	      console.log("ENCRYPTING: " + plaintext);
 	      var encrypted = getEncrypted(plaintext);
-	      console.log("Encrypted is: " + encrypted);
+	      console.log("Encrypted is: " + plaintext);
 	      document.getElementById("DisplayBox").value = encrypted;
 	      console.log("Should have put this in the textbox: " + encrypted);
 	  })
@@ -80,6 +83,8 @@
 	      document.getElementById("DisplayBox").value = plaintext;
 	      console.log("Should have put this in the textbox: " + plaintext);
 	  })
+
+	  console.log("The RESULT box has " + "FOOBAR");
        }
      )
 
