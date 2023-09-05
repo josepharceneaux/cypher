@@ -34,32 +34,33 @@
 
     <script>
 
-      var cypher_function = "Some URL";
-
-      function getIP(){
-          fetch("https://ipinfo.io/json").then(function (response) {
-              return response.json();
-          }).then(function (jsonResponse) {
-              div.innerHTML = 'IP Address: ' + jsonResponse.ip;
-          })  
-      }
+      <!-- function getIP(){ -->
+      <!--     fetch("https://ipinfo.io/json").then(function (response) { -->
+      <!--         return response.json(); -->
+      <!--     }).then(function (jsonResponse) { -->
+      <!--         div.innerHTML = 'IP Address: ' + jsonResponse.ip; -->
+      <!--     })   -->
+      <!-- } -->
 
       // Stub for requesting encryption of text
       function getEncrypted(plaintext){
 
-	  <!-- alert("ENCRYPRING: " + plaintext); -->
-	  <!-- return "ENCRYPTING: " + plaintext; -->
-
-	  alert("Getting ENCRYPTING of " + plaintext);
-	  console.log("Fetching CYPHER text from URL: " + cypher_function);
-	  return "ENCRYPTED TEXT!!!!";
+          <!-- var cypher_url = "Some URL"; -->
+	  <!-- alert("Getting ENCRYPTING of " + plaintext); -->
+	  <!-- console.log("Fetching CYPHER text from URL: " + cypher_url); -->
+	  return "ENCRYPTED TEXT";
       }
 
       // Stub for requesting decryption of text
       function getDecrypted(encryptedtext){
-	  console.log("Fetching PLAIN text from URL: " + cypher_function);
-	  plaintext = "PLAINTEXT";
-	  return plaintext;
+          <!-- var cypher_url = "Some URL"; -->
+	  <!-- console.log("Fetching PLAIN text from URL: " + cypher_url); -->
+	  <!-- plaintext = "PLAINTEXT"; -->
+	  return "PLAINTEXT";
+      }
+
+      function setResultBox(text) {
+	  document.getElementById("DisplayBox").innerHTML = text;
       }
 
       // The text to decrypt
@@ -67,25 +68,25 @@
 
           $("#Button1").click(function(plaintextparm){
       	      var plaintext = $("[name='plaintext']").val();
+              console.log("Button 1 labda");
 	      console.log("ENCRYPTING: " + plaintext);
-	      var encrypted = getEncrypted(plaintext);
-	      console.log("Encrypted is: " + plaintext);
-	      document.getElementById("DisplayBox").value = encrypted;
-	      console.log("Should have put this in the textbox: " + encrypted);
+	      var encrypted = getEncrypted();
+	      setResultBox(encrypted);
 	  })
 
-	  console.log("Setting Button2");
           $("#Button2").click(function(encryptedparm){
       	      var cyphertext = $("[name='encryptedtext']").val();
+              console.log("Button 1 labda");
 	      console.log("DECRYPTING: " + cyphertext);
 	      var plaintext = getDecrypted(cyphertext);
-	      console.log("Decrypted is: " + plaintext);
-	      document.getElementById("DisplayBox").value = plaintext;
-	      console.log("Should have put this in the textbox: " + plaintext);
+	      setResultBox(plaintext);
 	  })
 
-	  console.log("The RESULT box has " + "FOOBAR");
-       }
+	  <!-- document.getElementById("DisplayBox").value = "Waiting for Input"; -->
+	  <!-- console.log("Result box is: " + document.getElementById("DisplayBox").value); -->
+
+	  console.log("TExt BOX is: " + document.getElementById("DisplayBox").innerHTML);
+        }
      )
 
     </script>
@@ -97,7 +98,7 @@
     <div id="Content">
       <center>
       <div id="Main">
-	  <div id="SubTitleText">
+	  <div id="SubTitleText">sole.log
 	    <h1><i>Encrypt / Decrypt</i></h1>
 	  </div>
 	  <div id="RoundedFrame">
@@ -131,8 +132,13 @@
 	      </div>
 	      <br><br><br><br>
 
+	      <!-- Here's where the result goes -->
+	      <!-- <form id="DisplayBox"> -->
+	      <!-- 	<\!-- <input type-"text" id="DisplayBox" name="resultBox"> -\-> -->
+	      <!-- </form> -->
+
 	      <div id="DisplayBox">
-		Waiting for result...
+	      	Waiting for result...
 	      </div>
 
 
