@@ -3,6 +3,7 @@
 # Lambda targets
 BUCKET_NAME=arceneaux.me
 BUCKET_URI=s3://${BUCKET_NAME}
+FUNCTION_NAME=cypher
 
 # Local places
 LOCAL_STATIC_DIR=~/src/web/cypher
@@ -19,6 +20,10 @@ list-buckets:
 list-functions:
 	@echo "All Lambda functions"
 	@aws lambda list-functions | grep FunctionName
+
+describe-function:
+	@echo "Function ${FUNCTION_NAME}"
+	@aws lambda get-function --function-name ${FUNCTION_NAME}
 
 static: install-static
 install-static:
