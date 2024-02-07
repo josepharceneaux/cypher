@@ -44,8 +44,15 @@
 
       // Stub for requesting encryption of text
       function getEncrypted(plaintext){
-          var cypher_url = "HTTPS://CYPHERURL ";
+          var cypher_url = " https://pnmz2nwrh3okvysnc5tbkrujo40jxmhd.lambda-url.us-east-1.on.aws/"
+          <!-- var cypher_url = "HTTPS://CYPHERURL "; -->
+	  var event = { event: { 'request': 'encrypt', 'plaintext': plaintext } };
 	  console.log("Fetching CYPHER text for " + plaintext + "from URL: " + cypher_url);
+	  console.log("EVENT: " + event);
+	  var event_string = JSON.stringify(event);
+	  console.log("Stringified data: " + event_string);
+	  result = $.post (cypher_url, event_string);
+	  console.log("Request returned: " + JSON.stringify(result));
 	  return "ENCRYPTED TEXT";
       }
 
@@ -67,7 +74,7 @@
       	      var plaintext = $("[name='plaintext']").val();
               console.log("Button 1 labda");
 	      console.log("ENCRYPTING: " + plaintext);
-	      var encrypted = getEncrypted();
+	      var encrypted = getEncrypted(plaintext);
 	      setResultBox(encrypted);
 	  })
 
@@ -95,7 +102,7 @@
     <div id="Content">
       <center>
       <div id="Main">
-	  <div id="SubTitleText">sole.log
+	  <div id="SubTitleText">
 	    <h1><i>Encrypt / Decrypt</i></h1>
 	  </div>
 	  <div id="RoundedFrame">

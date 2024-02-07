@@ -17,6 +17,10 @@ list-buckets:
 	@echo "S3 buckets"
 	@aws s3 ls
 
+list-arceneaux:
+	@echo "Arceneaux.me contents"
+	@aws s3 ls arceneaux
+
 list-functions:
 	@echo "All Lambda functions"
 	@aws lambda list-functions | grep FunctionName
@@ -37,15 +41,19 @@ install-static:
 
 # If we want to istall stuff locally
 # install-local-static:
-# 	@echo "Copying LOCAL static files"
+# 	2@echo "Copying LOCAL static files"
 # 	@cp ./cypher.html ${LOCAL_STATIC_DIR}/
 
-function-zip-file: deployment-package.zip
-deployment-package.zip:
-	zip deployment-package.zip subsitutionn.py lambda_function.py
 
-install-lambda:
+deployment-package.zip:
+	@echo "Making lambda function"
+	cd lambda
+	make deployment-package.zip
+
+install-lambda: deployment-package.zip
 	@echo "Uploading Lambda function"
+	@aws s3api put-object-acl --bucket ${BUCKET_NAME} --key deployment-package.zip --acl public-read
+	@aws s3 cp ./lambda/deployment-package.zip ${BUCKET_URI}/deployment-package.zip
 
 install: install-static install-lambda
 

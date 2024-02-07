@@ -17,13 +17,15 @@ def lambda_handler(event, context):
 
     action = event['queryStringParameters']['request']
     if action and action == "encrypt":
-        print("Encrypting")
         plain_text = event['queryStringParameters']['plaintext']
+        print("Encrypting " +  plain_text)
         encoded_text = s.encode(plain_text)
+        print("Encrypted: " + encoded_text
     elif action and action == "decrypt":
         encoded_text = event['queryStringParameters']['encodedtext']
-        print("Decrypting")
+        print("Decrypting " + encoded_text)
         plain_text = s.decode(encoded_text)
+        print("Dewcrypted " + plain_text)
     else:
         action = "unknown action"
         plaintext = ""
